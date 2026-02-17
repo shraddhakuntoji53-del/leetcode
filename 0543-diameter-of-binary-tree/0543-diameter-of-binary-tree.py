@@ -1,5 +1,5 @@
 class Solution:
-    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+    def diameterOfBinaryTree(self, root):
         self.diameter = 0
         
         def height(node):
@@ -9,7 +9,7 @@ class Solution:
             left = height(node.left)
             right = height(node.right)
             
-            # update diameter (number of edges)
+            # update diameter
             self.diameter = max(self.diameter, left + right)
             
             # return height
