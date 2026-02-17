@@ -1,18 +1,13 @@
 class Solution:
-    def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        self.prev = None
-        
-        def inorder(node):
+    def isValidBST(self, root):
+        def dfs(node, low, high):
             if not node:
                 return True
             
-            if not inorder(node.left):
+            if not (low < node.val < high):
                 return False
             
-            if self.prev is not None and node.val <= self.prev:
-                return False
-            
-            self.prev = node.val
-            return inorder(node.right)
+            return (dfs(node.left, low, node.val) and
+                    dfs(node.right, node.val, high))
         
-        return inorder(root)
+        return dfs(root, float('-inf'), float('inf'))
