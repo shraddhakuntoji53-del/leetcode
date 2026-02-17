@@ -1,16 +1,15 @@
 class Solution:
-    def sumNumbers(self, root: Optional[TreeNode]) -> int:
-        
-        def dfs(node, current):
+    def sumNumbers(self, root):
+        def dfs(node, current_sum):
             if not node:
                 return 0
             
-            current = current * 10 + node.val
+            current_sum = current_sum * 10 + node.val
             
-            # If leaf node
+            # leaf node
             if not node.left and not node.right:
-                return current
+                return current_sum
             
-            return dfs(node.left, current) + dfs(node.right, current)
+            return dfs(node.left, current_sum) + dfs(node.right, current_sum)
         
         return dfs(root, 0)
