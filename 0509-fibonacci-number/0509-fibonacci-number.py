@@ -1,14 +1,14 @@
 class Solution:
     def fib(self, n: int) -> int:
         self.dp = [-1] * (n + 1)
-        return self.solve(n)
+        return self.fibo(n)
 
-    def solve(self, n):
-        if n <= 1:
+    def fibo(self, n):
+        if n ==0 or n==1:
             return n
         
         if self.dp[n] != -1:
             return self.dp[n]
         
-        self.dp[n] = self.solve(n-1) + self.solve(n-2)
+        self.dp[n] = self.fibo(n-1) + self.fibo(n-2)
         return self.dp[n]
